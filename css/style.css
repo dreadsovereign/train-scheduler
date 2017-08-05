@@ -1,0 +1,31 @@
+body {
+  background-color: #2C3E50;
+  font-family: "Source Sans Pro";
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: #1ABC9C;
+  color: #fff;
+}
+
+.panel-default>.panel-heading {
+  background-color: #3498DB;
+  color: #fff;
+}
+
+.panel-default {
+  border: 0;
+}
+
+.train-list {
+  text-align: center;
+}
+
+.col-md-12 {
+  background-color: #fff;
+}
+
+.btn-group {
+  margin-bottom: 15px;
+}
