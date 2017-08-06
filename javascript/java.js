@@ -6,7 +6,7 @@ var config = {
     storageBucket: "",
     messagingSenderId: "553138803015"
   };
-  firebase.initializeApp(config);
+    firebase.initializeApp(config);
 
 var database = firebase.database();
 
@@ -14,15 +14,13 @@ var trainName = "";
 var destination = "";
 var frequency = "";
 var firstTrain = "";
-var nextArrival = "";
-var minutesAway = "";
 
-$(".btn.btn-danger").on("click", function(event) {
+$("#submit").on("click", function(event) {
   event.preventDefault();
 
-  trainName = $("#train-name").val().trim();
+  trainName = $("#trainname").val().trim();
   destination = $("#destination").val().trim();
-  firstTrain = $("#first-train").val().trim();
+  firstTrain = $("#firsttrain").val().trim();
   frequency = $("#frequency").val().trim();
 
   database.ref().push({
@@ -31,6 +29,11 @@ $(".btn.btn-danger").on("click", function(event) {
     firstTrain: firstTrain,
     frequency: frequency,
   });
+
+$("#trainname").val("");
+$("#destination").val("");
+$("#firsttrain").val("");
+$("#frequency").val("");
 
 });
 
@@ -54,6 +57,7 @@ var timeTillTrain = tFrequency - tRemainder;
 var nextTrain = moment().add(timeTillTrain, "minutes").format("hh:mm")
 
 $(".table").append("<tr><td>" + snapshot.val().trainName + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + nextTrain + "</td><td>" + timeTillTrain + "</td></tr>")
+
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
