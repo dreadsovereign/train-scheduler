@@ -7,6 +7,7 @@ body {
   text-align: center;
   background-color: #1ABC9C;
   color: #fff;
+  margin-bottom: 20px;
 }
 
 .panel-default>.panel-heading {
@@ -28,4 +29,12 @@ body {
 
 .btn-group {
   margin-bottom: 15px;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
 }

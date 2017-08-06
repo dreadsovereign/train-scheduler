@@ -35,11 +35,25 @@ $(".btn.btn-danger").on("click", function(event) {
 });
 
 database.ref().on("child_added", function(snapshot) {
-  var ss = snapshot.val();
 
-  console.log(ss.trainName);
-  console.log(ss.destination);
-  console.log(ss.firstTrain);
-  console.log(ss.frequency);
+var tFrequency = snapshot.val().frequency;
 
+var convertedDate = moment(snapshot.val().firstTrain, "hh:mm").subtract(1, "years");
+
+var trainTime = moment(convertedDate).format("HH:mm");
+
+var currentTime = moment();
+
+var firstTimeConverted = moment(trainTime,"hh:mm").subtract(1, "years");
+
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+var tRemainder = diffTime % tFrequency;
+
+var timeTillTrain = tFrequency - tRemainder;
+
+var nextTrain = moment().add(timeTillTrain, "minutes").format("HH:mm")
+
+$(".table").append("<tr><td>" + snapshot.val().trainName + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + trainTime + "</td><td>" + timeTillTrain + "</td></tr>")
+}, function(errorObject) {
+  console.log("Errors handled: " + errorObject.code);
 });
