@@ -51,9 +51,9 @@ var tRemainder = diffTime % tFrequency;
 
 var timeTillTrain = tFrequency - tRemainder;
 
-var nextTrain = moment().add(timeTillTrain, "minutes").format("HH:mm")
+var nextTrain = moment().add(timeTillTrain, "minutes").format("hh:mm")
 
-$(".table").append("<tr><td>" + snapshot.val().trainName + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + trainTime + "</td><td>" + timeTillTrain + "</td></tr>")
+$(".table").append("<tr><td>" + snapshot.val().trainName + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + nextTrain + "</td><td>" + timeTillTrain + "</td></tr>")
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
